@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Email verified for Listly">
+  <title>Email Verified — Listly</title>
+  <style>
+    :root {
+      --bg: #FEF7ED;
+      --surface: #FFFFFF;
+      --text: #1F2937;
+      --muted: #6B7280;
+      --accent: #F97316;
+      --accent-dark: #C2410C;
+      --success: #10B981;
+      --success-bg: #D1FAE5;
+      --border: #FED7AA;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 440px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 40px rgba(249, 115, 22, 0.08);
+      text-align: center;
+    }
+
+    .brand {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.6px;
+      margin-bottom: 32px;
+    }
+
+    .success-circle {
+      width: 88px;
+      height: 88px;
+      background: var(--success-bg);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .checkmark {
+      width: 44px;
+      height: 44px;
+      stroke: var(--success);
+      stroke-width: 4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .checkmark path {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: drawCheck 0.6s 0.3s forwards ease-out;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.55;
+    }
+
+    .open-button {
+      display: inline-block;
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+    }
+
+    .open-button:hover {
+      background: var(--accent-dark);
+    }
+
+    .open-button:active {
+      transform: translateY(1px);
+    }
+
+    .help-text {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .help-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 32px 24px;
+        border-radius: 16px;
+      }
+      h1 { font-size: 24px; }
+      .subtitle { font-size: 15px; }
+      .success-circle { width: 76px; height: 76px; }
+      .checkmark { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="brand">LISTLY</span>
+
+    <div class="success-circle">
+      <svg class="checkmark" viewBox="0 0 52 52">
+        <path d="M14 27 l8 8 l16-18" />
+      </svg>
+    </div>
+
+    <h1>Email verified!</h1>
+    <p class="subtitle">
+      Your Listly account is ready. Tap the button below to open the app and start sharing lists.
+    </p>
+
+    <a href="listly://" class="open-button" id="openApp">
+      Open Listly app
+    </a>
+
+    <div class="help-text">
+      <strong>Button not working?</strong><br>
+      Open the Listly app manually on your phone and sign in with your email and password.
+    </div>
+  </div>
+
+  <div class="footer">
+    Need help? Email <a href="mailto:Orbitralabs@gmail.com">Orbitralabs@gmail.com</a>
+  </div>
+
+  <script>
+    // Optional: auto-attempt to open the app after a brief delay,
+    // giving the user time to see the success message.
+    // We use a deferred approach so the user sees the success state first.
+    document.getElementById('openApp').addEventListener('click', function(e) {
+      // The href="listly://" handles the deep link.
+      // No need to prevent default — let the browser try.
+    });
+  </script>
+</body>
+</html>
