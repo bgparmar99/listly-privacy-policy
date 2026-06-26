@@ -196,13 +196,37 @@
   </div>
 
   <script>
-    // Optional: auto-attempt to open the app after a brief delay,
-    // giving the user time to see the success message.
-    // We use a deferred approach so the user sees the success state first.
-    document.getElementById('openApp').addEventListener('click', function(e) {
-      // The href="listly://" handles the deep link.
-      // No need to prevent default — let the browser try.
-    });
+    (function () {
+      // Supabase appends session tokens to the URL hash after email verification,
+      // e.g. #access_token=...&refresh_token=...&type=signup
+      // Read them and pass to the app so it can sign the user in automatically.
+      var hash = window.location.hash.slice(1); // strip leading #
+      var params = new URLSearchParams(hash);
+      var at = params.get('access_token');
+      var rt = params.get('refresh_token');
+
+      var deepLink;
+      if (at && rt) {
+        // Build a token-carrying deep link. encodeURIComponent handles +/=/ chars
+        // inside JWT and refresh token values so they survive the query string.
+        deepLink = 'listly://auth/callback'
+          + '?access_token=' + encodeURIComponent(at)
+          + '&refresh_token=' + encodeURIComponent(rt);
+      } else {
+        // Direct page visit or non-signup redirect — open app cold, no tokens.
+        deepLink = 'listly://';
+      }
+
+      document.getElementById('openApp').href = deepLink;
+
+      // Auto-attempt to open the app after a short delay so the user sees the
+      // success screen first. On desktop (no app installed) this is a no-op.
+      if (at && rt) {
+        setTimeout(function () {
+          window.location.href = deepLink;
+        }, 1200);
+      }
+    })();
   </script>
 </body>
 </html>
