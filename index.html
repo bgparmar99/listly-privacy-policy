@@ -129,6 +129,22 @@
       margin: 16px 0;
     }
 
+    /* Used for the disclosure that matters most: what other members of a
+       shared list can see about your spending. Deliberately prominent rather
+       than a bullet in a list. */
+    .highlight-card {
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .highlight-card p:last-child {
+      margin-bottom: 0;
+    }
+
     .contact-card p {
       margin-bottom: 6px;
       font-size: 15px;
@@ -163,7 +179,7 @@
     <header>
       <span class="brand">LISTLY</span>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: June 23, 2026</p>
+      <p class="updated">Last updated: August 9, 2026</p>
     </header>
 
     <p class="intro">This Privacy Policy describes how Listly ("we", "our", or "us") collects, uses, and shares information when you use the Listly mobile application (the "App"). By using Listly, you agree to the practices described below.</p>
@@ -177,7 +193,8 @@
 
     <h3>2.1 Information You Provide</h3>
     <ul>
-      <li><strong>Account information.</strong> When you sign up, we collect your email address, password (stored securely as a hash, never in plain text), and the display name you choose.</li>
+      <li><strong>Account information.</strong> You can create an account with an email address and password, or by signing in with <strong>Google</strong> or with <strong>Apple</strong>. Either way we store your email address and the display name shown to other members. If you use an email and password, the password is stored only as a secure hash, never in plain text; if you sign in with Google or Apple, we never receive a password at all.</li>
+      <li><strong>Sign in with Apple and “Hide My Email”.</strong> Apple lets you hide your real email address when you sign in. If you choose that, the address we store is an Apple private relay address ending in <strong>@privaterelay.appleid.com</strong>, and we never see your real one. Listly works exactly the same either way. Because a relay address is different from your real address, be aware that signing in with Apple using “Hide My Email” creates a <em>separate</em> account from any you may already have under your real address.</li>
       <li><strong>Lists and items.</strong> When you create or join a list, we store the list name, items you add (name, quantity, unit, category, notes, urgency flag), and purchase history (prices, dates, who purchased).</li>
       <li><strong>Expenses and splits.</strong> If you use the splitting feature, we store expense amounts, descriptions, dates, who paid, and how the amount is split between members.</li>
       <li><strong>Settlements.</strong> Money movements you record between members.</li>
@@ -196,10 +213,9 @@
     <h2>3. How We Use Your Information</h2>
     <p>We use your information to:</p>
     <ul>
-      <li>Provide the core App functionality (create lists, sync data across your devices and other list members, calculate splits and balances)</li>
+      <li>Provide the core App functionality (create lists, calculate splits and balances, and keep shared lists in sync)</li>
       <li>Authenticate you when you sign in</li>
-      <li>Show you and other list members your activity within shared lists</li>
-      <li>Diagnose crashes and fix bugs</li>
+      <li>Show you and other list members your activity within shared lists, and send those updates to their devices as they happen</li>
       <li>Understand which features are useful and improve the App</li>
       <li>Communicate with you about important account or service changes (we do not send marketing emails)</li>
     </ul>
@@ -207,25 +223,41 @@
 
     <h2>4. Who We Share Your Information With</h2>
 
-    <h3>4.1 Other List Members</h3>
-    <p>When you join a shared list, the other members of that list can see:</p>
+    <h3>4.1 Other List Members — Including Your Spending and Balances</h3>
+
+    <div class="highlight-card">
+      <p><strong>Please read this before joining a shared list.</strong> A shared list is not private between you and the App. Every other member of that list can see what you paid for, what you owe, what you are owed, and the amounts — not just totals, but the individual expenses and settlements that make them up.</p>
+      <p>This is the point of the splitting feature, and it is how the App is useful. It does mean that joining a shared list makes your spending within that list visible to the other people in it.</p>
+    </div>
+
+    <p>Specifically, other members of a list you belong to can see:</p>
     <ul>
       <li>Your display name</li>
       <li>Items you add or mark as purchased</li>
       <li>Prices you record</li>
-      <li>Expenses, splits, and settlements involving you</li>
+      <li>Expenses and splits involving you — including the amount, who paid, and how it was divided</li>
+      <li>Settlements between you and other members</li>
+      <li><strong>Your running balance in that list</strong> — whether you owe money or are owed money, and how much</li>
       <li>Activity history within that list</li>
     </ul>
-    <p>This is core to the App's purpose. You can leave a list at any time to stop sharing further activity.</p>
 
-    <h3>4.2 Service Providers</h3>
+    <p>Members of a list do <strong>not</strong> see your email address, your activity in other lists, or anything outside the list you share with them.</p>
+    <p>You can leave a list at any time to stop sharing further activity. Data you have already contributed to that list stays with it for the remaining members.</p>
+
+    <h3>4.2 Live Updates to Other Members' Devices</h3>
+    <p>Listly keeps shared lists in sync in real time. When you add an item, record a price, or log an expense, that change is transmitted immediately to the devices of the other members of that list while they have the App open — it is not merely stored for them to fetch later. The same happens in reverse: their changes appear on your device as they make them.</p>
+
+    <h3>4.3 Service Providers</h3>
     <p>We use the following third-party services to operate the App. Each acts as a data processor on our behalf:</p>
     <ul>
       <li><strong>Supabase</strong> (data hosting &amp; database). Stores your account, lists, items, expenses, and related data. Servers are located in Singapore. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase Privacy Policy</a></li>
       <li><strong>PostHog</strong> (product analytics). Receives anonymous usage events and derives approximate location from IP address. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog Privacy Policy</a></li>
+      <li><strong>Google</strong> (sign-in, only if you choose it). Google confirms your identity to us; we receive your email address and name. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><strong>Apple</strong> (sign-in, only if you choose it). Apple confirms your identity to us; we receive an email address — your real one, or a private relay address if you chose to hide it. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+      <li><strong>Expo</strong> (app updates). The App checks Expo's servers for over-the-air updates to its own code. Expo receives your device's IP address and the App version as part of that check. It does not receive your account, list, or expense data. <a href="https://expo.dev/privacy" target="_blank" rel="noopener">Expo Privacy Policy</a></li>
     </ul>
 
-    <h3>4.3 Legal Requirements</h3>
+    <h3>4.4 Legal Requirements</h3>
     <p>We may disclose information if required by law, court order, or to protect our rights, safety, or the safety of others.</p>
 
     <h2>5. Data Retention</h2>
@@ -234,20 +266,27 @@
       <li><strong>List and item data</strong> is retained while the list exists and you are a member.</li>
       <li><strong>Analytics events</strong> are retained by PostHog for up to 12 months.</li>
     </ul>
-    <p>If you delete your account, we delete or anonymize your personal data within 30 days, except where retention is required by law. Lists you created may remain accessible to other members; you can transfer ownership before leaving.</p>
+    <p>When you delete your account from inside the App, the removal happens immediately as part of that action rather than on a delay. Your profile, your list memberships, your expense records and your analytics identifier are deleted at that point.</p>
+    <p>Lists you created that still have other members are <strong>transferred to the longest-standing remaining member</strong>, so a household does not lose a list it depends on. Lists where you were the only member are deleted along with everything in them. Items you added to lists that survive remain in those lists, but are no longer attributed to you.</p>
+    <p>If you ask us to delete your account by email instead, we complete it within 30 days. We may retain limited information where the law requires it.</p>
 
     <h2>6. Your Rights</h2>
     <p>Depending on where you live, you may have the following rights:</p>
     <ul>
       <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
       <li><strong>Correction</strong> — ask us to correct inaccurate information</li>
-      <li><strong>Deletion</strong> — ask us to delete your account and personal data</li>
+      <li><strong>Deletion</strong> — delete your account and personal data yourself in the App, or ask us to do it</li>
       <li><strong>Withdraw consent</strong> — stop using the App at any time</li>
       <li><strong>Portability</strong> — request your data in a machine-readable format</li>
       <li><strong>Object</strong> — object to certain processing of your data</li>
       <li><strong>Lodge a complaint</strong> with your local data protection authority</li>
     </ul>
     <p>To exercise these rights, email us at <strong><a href="mailto:Orbitralabs@gmail.com">Orbitralabs@gmail.com</a></strong>. We respond within 30 days.</p>
+
+    <h3>Deleting Your Account</h3>
+    <p>You can delete your account yourself, at any time, from inside the App: <strong>Settings → Delete account</strong>. Before you confirm, the App tells you exactly what will happen to your data — which of your lists will be transferred and to whom, which will be deleted and how many items they hold, and how much money owed to you will be written off. If you would rather not use the App, email us at <strong><a href="mailto:Orbitralabs@gmail.com">Orbitralabs@gmail.com</a></strong> and we will do it for you. Full details: <a href="/delete-account.html">deleting your account</a>.</p>
+
+    <p><strong>One case where deletion is held up.</strong> If you currently owe money to another member of a shared list, the App asks you to settle that before deleting. This exists to protect the other members: deleting your account removes those expense records, and doing it while you still owe someone would quietly erase a debt they were relying on. You can settle up inside the App — including simply recording a payment you already made outside it — and then delete. Money owed <em>to</em> you never blocks deletion; you are free to write it off by deleting, and the App shows you the amount first so the choice is an informed one.</p>
 
     <h3>India (DPDP Act 2023)</h3>
     <p>If you are an Indian user, you have rights under the Digital Personal Data Protection Act, 2023, including the right to information, correction and erasure, grievance redressal, and nomination.</p>
@@ -285,7 +324,7 @@
 
     <p>For grievances under the Indian DPDP Act, you may also contact the Data Protection Board of India.</p>
 
-    <p class="footer-note">This Privacy Policy was last updated on June 16, 2026.</p>
+    <p class="footer-note">This Privacy Policy was last updated on August 9, 2026.</p>
   </div>
 </body>
 </html>
