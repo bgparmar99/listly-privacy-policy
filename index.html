@@ -179,7 +179,7 @@
     <header>
       <span class="brand">LISTLY</span>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: August 9, 2026</p>
+      <p class="updated">Last updated: September 24, 2026</p>
     </header>
 
     <p class="intro">This Privacy Policy describes how Listly ("we", "our", or "us") collects, uses, and shares information when you use the Listly mobile application (the "App"). By using Listly, you agree to the practices described below.</p>
@@ -205,6 +205,7 @@
     <ul>
       <li><strong>Anonymous usage analytics.</strong> We use PostHog to understand how the App is used in aggregate — which screens are visited, which features are used, how often the App is opened. Sensitive text inputs (item names, expense descriptions, notes) are NOT captured. PostHog also derives your approximate location (country and region) from your IP address; your precise location is never collected.</li>
       <li><strong>Device and session info.</strong> Operating system, App version, language, time zone, and an anonymous session identifier.</li>
+      <li><strong>Push notification token.</strong> If you turn on notifications, we store a token identifying each device you use, so notifications can be delivered to it. See <strong>Push notifications</strong> below.</li>
     </ul>
 
     <h3>2.3 Information We Do NOT Collect</h3>
@@ -254,13 +255,22 @@
       <li><strong>PostHog</strong> (product analytics). Receives anonymous usage events and derives approximate location from IP address. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog Privacy Policy</a></li>
       <li><strong>Google</strong> (sign-in, only if you choose it). Google confirms your identity to us; we receive your email address and name. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
       <li><strong>Apple</strong> (sign-in, only if you choose it). Apple confirms your identity to us; we receive an email address — your real one, or a private relay address if you chose to hide it. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
-      <li><strong>Expo</strong> (app updates). The App checks Expo's servers for over-the-air updates to its own code. Expo receives your device's IP address and the App version as part of that check. It does not receive your account, list, or expense data. <a href="https://expo.dev/privacy" target="_blank" rel="noopener">Expo Privacy Policy</a></li>
+      <li><strong>Expo Application Services</strong> (app updates and notification delivery). The App checks Expo's servers for over-the-air updates to its own code; Expo receives your device's IP address and the App version as part of that check. If you turn on notifications, Expo also receives your device's push token, the list name, and a short description of what changed, in order to deliver the notification. It does not receive your account credentials, your expense amounts, or your data from lists it is not notifying you about. <a href="https://expo.dev/privacy" target="_blank" rel="noopener">Expo Privacy Policy</a></li>
+      <li><strong>Apple Push Notification service</strong> (notification delivery on iOS, only if you turn on notifications). Receives the notification and your device token from Expo in order to deliver it to your device. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+      <li><strong>Firebase Cloud Messaging</strong> (notification delivery on Android, only if you turn on notifications). Receives the notification and your device token from Expo in order to deliver it to your device. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
     </ul>
 
     <h3>4.4 Legal Requirements</h3>
     <p>We may disclose information if required by law, court order, or to protect our rights, safety, or the safety of others.</p>
 
-    <h2>5. Data Retention</h2>
+    <h2>5. Push notifications</h2>
+    <p>If you turn on notifications, Listly stores a push notification token for each device you use. This token identifies the device to Apple's and Google's notification services; it does not identify you personally and is not used for advertising or analytics.</p>
+    <p>We store the token against your account so we can notify you when another member of a shared list adds, buys, or removes an item, joins the list, or records a split or settlement. We never send you notifications about your own actions.</p>
+    <p>To deliver them we pass the token, the list name, and a short description of what changed to Expo Application Services, which forwards the message to Apple Push Notification service or Firebase Cloud Messaging. These providers process this information solely to deliver notifications on our behalf.</p>
+    <p>If you turn notifications off in Listly's Settings, we mark your device's token inactive and stop sending to it; the token is retained so that turning notifications back on does not require setting them up again. Your tokens are deleted when you sign out and when you delete your account. We also remove any token that the notification service reports as no longer registered, which happens if you uninstall the app.</p>
+    <p>You can turn notifications off at any time in Listly's Settings, or in your device's system settings.</p>
+
+    <h2>6. Data Retention</h2>
     <ul>
       <li><strong>Account data</strong> (email, display name) is retained while your account is active.</li>
       <li><strong>List and item data</strong> is retained while the list exists and you are a member.</li>
@@ -270,7 +280,7 @@
     <p>Lists you created that still have other members are <strong>transferred to the longest-standing remaining member</strong>, so a household does not lose a list it depends on. Lists where you were the only member are deleted along with everything in them. Items you added to lists that survive remain in those lists, but are no longer attributed to you.</p>
     <p>If you ask us to delete your account by email instead, we complete it within 30 days. We may retain limited information where the law requires it.</p>
 
-    <h2>6. Your Rights</h2>
+    <h2>7. Your Rights</h2>
     <p>Depending on where you live, you may have the following rights:</p>
     <ul>
       <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
@@ -294,7 +304,7 @@
     <h3>European Economic Area / United Kingdom (GDPR / UK GDPR)</h3>
     <p>If you are in the EEA or UK, the legal bases we rely on are: (a) <strong>contract</strong> — to provide the App you signed up for; (b) <strong>legitimate interests</strong> — to keep the App secure and improve it; and (c) <strong>consent</strong> — where you have given it (you can withdraw at any time).</p>
 
-    <h2>7. Security</h2>
+    <h2>8. Security</h2>
     <p>We protect your data with:</p>
     <ul>
       <li>HTTPS encryption for all data transmitted between your device and our servers</li>
@@ -304,16 +314,16 @@
     </ul>
     <p>No system is perfectly secure. If we discover a data breach affecting your personal data, we will notify you and the relevant authorities as required by law.</p>
 
-    <h2>8. Children's Privacy</h2>
+    <h2>9. Children's Privacy</h2>
     <p>Listly is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us so we can delete it.</p>
 
-    <h2>9. International Data Transfers</h2>
+    <h2>10. International Data Transfers</h2>
     <p>Your data is processed primarily on servers located in Singapore (Supabase) and may also be processed in the United States or European Union (PostHog). By using the App, you consent to your data being transferred to and processed in these regions.</p>
 
-    <h2>10. Changes to This Policy</h2>
+    <h2>11. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top. For significant changes, we will notify you within the App or by email. Continued use of the App after changes means you accept the updated policy.</p>
 
-    <h2>11. Contact Us</h2>
+    <h2>12. Contact Us</h2>
     <p>If you have questions, concerns, or requests about this Privacy Policy or your data:</p>
 
     <div class="contact-card">
@@ -324,7 +334,7 @@
 
     <p>For grievances under the Indian DPDP Act, you may also contact the Data Protection Board of India.</p>
 
-    <p class="footer-note">This Privacy Policy was last updated on August 9, 2026.</p>
+    <p class="footer-note">This Privacy Policy was last updated on September 24, 2026.</p>
   </div>
 </body>
 </html>
